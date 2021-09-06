@@ -20,7 +20,6 @@ const ItemAdminView = ({ items, updateItemDetails, removeItem }) => {
   };
 
   const onEdit = (item) => {
-    console.log(item);
     const selectedItem = {
       _id: item._id,
       name: item.name,

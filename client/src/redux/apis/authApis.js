@@ -3,7 +3,6 @@ import config from "../../config.json";
 
 export const registerUser = async (userDetails) => {
   try {
-    console.log("api", userDetails);
     const response = await axios.post(
       `${config.Backend_URL}auth/register`,
       userDetails
@@ -16,7 +15,6 @@ export const registerUser = async (userDetails) => {
 
 export const loginUser = async (userDetails) => {
   try {
-    console.log("api", userDetails);
     const response = await axios.post(
       `${config.Backend_URL}auth/login`,
       userDetails

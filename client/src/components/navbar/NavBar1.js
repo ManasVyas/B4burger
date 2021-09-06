@@ -17,15 +17,13 @@ const NavBar1 = ({ loggedInUser, logOutUser, cart, setLoggedInUser }) => {
     cart.forEach((item) => {
       count += item.qty;
     });
-    console.log(loggedInUser);
     setCartCount(count);
   }, [cart, cartCount]);
 
   const logInUser = async () => {
-    const user = await setLoggedInUser(
+    await setLoggedInUser(
       JSON.parse(localStorage.getItem("loggedInUser"))
     );
-    console.log(user);
   };
 
   useEffect(() => {
@@ -35,7 +33,6 @@ const NavBar1 = ({ loggedInUser, logOutUser, cart, setLoggedInUser }) => {
   const handleLogOut = () => {
     localStorage.setItem("token", "");
     logOutUser();
-    console.log(loggedInUser);
     history.push("/");
     if (localStorage.getItem("token") === "") {
       Swal.fire({

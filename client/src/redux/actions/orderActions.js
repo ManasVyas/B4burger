@@ -39,7 +39,6 @@ export const loadOrders = () => {
     try {
       const orders = await orderApi.loadOrders();
       dispatch(loadOrdersSuccess(orders));
-      console.log("action", orders);
       return orders;
     } catch (error) {
       return error;

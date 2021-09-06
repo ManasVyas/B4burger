@@ -6,6 +6,7 @@ import UserAdminView from "./UserAdminView";
 import OrderAdminView from "./OrderAdminView";
 import { loadItems, deleteItem } from "../../redux/actions/itemActions";
 import { loadUsers, deleteUser } from "../../redux/actions/userActions";
+import { logOutUser } from "../../redux/actions/authActions";
 import { loadOrders } from "../../redux/actions/orderActions";
 import Swal from "sweetalert2";
 
@@ -15,6 +16,7 @@ const Admin = ({
   loadUsers,
   deleteUser,
   loadOrders,
+  logOutUser
 }) => {
   const [toggleState, setToggleState] = useState(1);
   const [items, setItems] = useState([]);
@@ -41,7 +43,6 @@ const Admin = ({
     const fetchOrders = async () => {
       const fetchedOrders = await loadOrders();
       setOrders(fetchedOrders.data.data);
-      console.log(fetchedOrders.data.data);
     };
     fetchOrders();
   }, [loadOrders]);
@@ -52,7 +53,6 @@ const Admin = ({
 
   const removeItem = async (id) => {
     const item = await deleteItem(id);
-    console.log(item);
     Swal.fire({
       position: "center",
       icon: "success",
@@ -69,7 +69,12 @@ const Admin = ({
 
   const removeUser = async (id) => {
     const user = await deleteUser(id);
-    console.log(user);
+    if (
+      user.data.data._id ===
+      JSON.parse(localStorage.getItem("loggedInUser")).data.user._id
+    ) {
+      logOutUser();
+    }
     Swal.fire({
       position: "center",
       icon: "success",
@@ -141,6 +146,7 @@ const mapDispatchToProps = (dispatch) => {
     loadUsers: () => dispatch(loadUsers()),
     deleteUser: (id) => dispatch(deleteUser(id)),
     loadOrders: () => dispatch(loadOrders()),
+    logOutUser: () => dispatch(logOutUser())
   };
 };
 

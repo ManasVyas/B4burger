@@ -8,7 +8,7 @@
     "start": "nodemon server.js"
   },
   "keywords": [],
-  "author": "Ravi Patel",
+  "author": "Manas Vyas",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",

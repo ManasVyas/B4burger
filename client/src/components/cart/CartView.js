@@ -19,7 +19,6 @@ const CartView = ({ cart, loggedInUser, checkout, removeFromCart }) => {
     let price = 0;
 
     cart.forEach((item) => {
-      console.log(item);
       items += item.qty;
       price += item.qty * item.price;
     });
@@ -29,14 +28,12 @@ const CartView = ({ cart, loggedInUser, checkout, removeFromCart }) => {
   }, [cart, totalPrice, totalItems, setTotalPrice, setTotalItems]);
 
   const transactionSuccess = async (data) => {
-    console.log(loggedInUser);
     let orderDetails = {
       cartDetails: cart,
       user: loggedInUser.data.user,
       paymentData: data,
       totalAmount: totalPrice,
     };
-    console.log("orderDetails", orderDetails);
     const response = await checkout(orderDetails);
     cart.forEach(async (cartItem) => {
       await removeFromCart(cartItem._id);
@@ -59,7 +56,6 @@ const CartView = ({ cart, loggedInUser, checkout, removeFromCart }) => {
         timer: 2000,
       });
     }
-    console.log(response);
   };
 
   const transactionError = () => {};

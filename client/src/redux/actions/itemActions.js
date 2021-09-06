@@ -80,7 +80,6 @@ export const loadItems = () => {
 export const addItem = (itemDetails) => {
   return async (dispatch) => {
     try {
-      console.log("action", itemDetails);
       const item = await itemApi.addItem(itemDetails);
       dispatch(addItemSuccess(item));
       return item;
@@ -94,7 +93,6 @@ export const updateItemDetails = (itemDetails) => {
   return (dispatch) => {
     try {
       dispatch(updateItemDetailsSuccess(itemDetails));
-      console.log(itemDetails);
       return itemDetails;
     } catch (error) {
       return error;

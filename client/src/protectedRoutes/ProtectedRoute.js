@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
-const StaffRoute = ({ component: Component, ...rest }) => {
+const ProtectedRoute = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
@@ -16,9 +16,7 @@ const StaffRoute = ({ component: Component, ...rest }) => {
           loggedInUser.data &&
           loggedInUser.data.user &&
           Object.keys(loggedInUser.data.user).length !== 0 &&
-          loggedInUser.data.user.constructor === Object &&
-          (loggedInUser.data.user.role.toLowerCase() === "staff" ||
-            loggedInUser.data.user.role.toLowerCase() === "admin")
+          loggedInUser.data.user.constructor === Object
         ) {
           return <Component />;
         } else {
@@ -31,4 +29,4 @@ const StaffRoute = ({ component: Component, ...rest }) => {
   );
 };
 
-export default StaffRoute;
+export default ProtectedRoute;

@@ -24,12 +24,10 @@ const KitchenView = ({ loadOrders, loggedInUser, updateOrder }) => {
       status === "Preparing" ||
       status === "Delivered"
     ) {
-      console.log("status", status);
       filteredOrder = orders.filter(
         (orderDetails) =>
           orderDetails.status.toLowerCase() === status.toLowerCase()
       );
-      console.log(filteredOrder);
     } else {
       filteredOrder = orders;
     }
@@ -52,7 +50,6 @@ const KitchenView = ({ loadOrders, loggedInUser, updateOrder }) => {
       const response = await loadOrders();
       if (response && response.data && response.data.data) {
         setOrders(response.data.data);
-        console.log(response.data.data);
       }
     } catch (error) {
       console.log(error.message);
@@ -72,13 +69,11 @@ const KitchenView = ({ loadOrders, loggedInUser, updateOrder }) => {
   ));
 
   const updateOrderStatus = async (order) => {
-    // console.log(order.target.value);
     if (order.status === "placed") {
       order.status = "preparing";
     } else if (order.status === "preparing") {
       order.status = "delivered";
     }
-    console.log(updateOrder);
     const response = await updateOrder(order);
     fetchOrders();
     if (response.status === 200) {
@@ -98,7 +93,6 @@ const KitchenView = ({ loadOrders, loggedInUser, updateOrder }) => {
         timer: 2000,
       });
     }
-    console.log(response);
   };
 
   return (

@@ -35,8 +35,7 @@ const Register = ({ registerUser }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     const response = await registerUser(userDetails);
-    console.log(response);
-    if (response && response.user) {
+    if (response && response.data.user) {
       localStorage.setItem("loggedInUser", JSON.stringify(response));
       localStorage.setItem("token", response.data.token);
       history.push("/items");

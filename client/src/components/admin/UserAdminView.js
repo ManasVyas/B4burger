@@ -28,14 +28,12 @@ const UserAdminView = ({ loadUsers, users, removeUser, updateUserDetails }) => {
   }, [loadUsers]);
 
   const onEdit = (user) => {
-    console.log(user);
     const selectedUser = {
       _id: user._id,
       userName: user.userName,
       role: user.role,
       contactNumber: user.contactNumber,
     };
-    console.log(selectedUser);
     updateUserDetails(selectedUser);
   };
 

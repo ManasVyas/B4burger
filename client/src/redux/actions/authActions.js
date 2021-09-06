@@ -31,7 +31,6 @@ export const setLoggedInUserSuccess = (user) => {
 export const registerUser = (userDetails) => {
   return async (dispatch) => {
     try {
-      console.log("action", userDetails);
       const user = await authApi.registerUser(userDetails);
       if (user.status === 200) {
         dispatch(registerUserSuccess(user));
@@ -46,7 +45,6 @@ export const registerUser = (userDetails) => {
 export const loginUser = (userDetails) => {
   return async (dispatch) => {
     try {
-      console.log("action", userDetails);
       const user = await authApi.loginUser(userDetails);
       if (user.status === 200) {
         dispatch(loginUserSuccess(user));

@@ -29,7 +29,6 @@ const AddItem = ({ addItem }) => {
     const { name, value } = e.target;
     if (name === "file") {
       setFile([...file, e.target.files[0]]);
-      console.log(e.target.files[0]);
     }
     setItem((prevState) => ({
       ...prevState,
@@ -46,7 +45,6 @@ const AddItem = ({ addItem }) => {
     formData.append("type", item.type);
     formData.append("timeToPrep", item.timeToPrep);
     const response = await addItem(formData);
-    console.log(response);
     if (response.status === 200) {
       Swal.fire({
         position: "center",

@@ -34,7 +34,6 @@ const AddUser = ({ addUser }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     const response = await addUser(user);
-    console.log(response);
     if (response.status === 200) {
       Swal.fire({
         position: "center",

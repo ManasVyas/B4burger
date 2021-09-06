@@ -4,7 +4,6 @@ import { addToCart } from "../../redux/actions/itemActions";
 import "./Item.css";
 
 const Item = ({ id, imageUrl, name, price, addToCart, type }) => {
-  console.log("id", id);
   return (
     <div className="card-container">
       <div className="image-container">

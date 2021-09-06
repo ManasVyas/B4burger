@@ -15,6 +15,9 @@ import AddUser from "./components/admin/AddUser";
 import UpdateUser from "./components/admin/UpdateUser";
 import CartView from "./components/cart/CartView";
 import KitchenView from "./components/kitchen/KitchenView";
+import AdminRoute from "./protectedRoutes/AdminRoute";
+import StaffRoute from "./protectedRoutes/StaffRoute";
+import ProtectedRoute from "./protectedRoutes/ProtectedRoute";
 
 const App = () => {
   return (
@@ -25,15 +28,15 @@ const App = () => {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/items" component={ItemListView} />
-            <Route exact path="/kitchen" component={KitchenView} />
+            <StaffRoute exact path="/kitchen" component={KitchenView} />
             <Route exact path="/signup" component={Register} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/admin" component={Admin} />
-            <Route exact path="/admin/addItem" component={AddItem} />
-            <Route exact path="/admin/updateItem" component={UpdateItem} />
-            <Route exact path="/admin/addUser" component={AddUser} />
-            <Route exact path="/admin/updateUser" component={UpdateUser} />
-            <Route exact path="/cart" component={CartView} />
+            <AdminRoute exact path="/admin" component={Admin} />
+            <AdminRoute exact path="/admin/addItem" component={AddItem} />
+            <AdminRoute exact path="/admin/updateItem" component={UpdateItem} />
+            <AdminRoute exact path="/admin/addUser" component={AddUser} />
+            <AdminRoute exact path="/admin/updateUser" component={UpdateUser} />
+            <ProtectedRoute exact path="/cart" component={CartView} />
             <Route
               path="*"
               component={() => (

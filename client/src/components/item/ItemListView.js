@@ -12,14 +12,12 @@ const ItemListView = (props) => {
       const response = await props.loadItems();
       if (response && response.data && response.data.data) {
         setItems(response.data.data);
-        console.log(response);
       }
     } catch (error) {
       console.log(error.message);
     }
   };
   useEffect(() => {
-    console.log("Comp mounted");
     loadItems();
   }, []);
   return (

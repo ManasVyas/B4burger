@@ -1,15 +1,22 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
-const AdminRoute = ({ loggedInUser, component: Component, ...rest }) => {
+const AdminRoute = ({ component: Component, ...rest }) => {
   return (
     <Route
-      exact
       {...rest}
       render={(props) => {
-        console.log(loggedInUser);
+        const loggedInUser =
+          localStorage.getItem("loggedInUser") &&
+          localStorage.getItem("loggedInUser") !== ""
+            ? JSON.parse(localStorage.getItem("loggedInUser"))
+            : {};
         if (
-          JSON.stringify(loggedInUser) !== "{}" &&
+          loggedInUser &&
+          loggedInUser.data &&
+          loggedInUser.data.user &&
+          Object.keys(loggedInUser.data.user).length !== 0 &&
+          loggedInUser.data.user.constructor === Object &&
           loggedInUser.data.user.role.toLowerCase() === "admin"
         ) {
           return <Component />;

@@ -11,7 +11,6 @@ const itemReducer = (state = initialState, action) => {
       newState.updateItemDetails = action.item;
       return newState;
     case types.ADD_TO_CART:
-      console.log("newState", newState);
       const item = newState.items.find((product) => product._id === action.id);
       const inCart = newState.cart.find((item) =>
         item._id === action.id ? true : false

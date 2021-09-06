@@ -43,7 +43,6 @@ const UpdateUser = ({ updateUser, userDetails }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     const response = await updateUser(user);
-    console.log(response);
     if (response.status === 200) {
       Swal.fire({
         position: "center",
@@ -115,7 +114,6 @@ const UpdateUser = ({ updateUser, userDetails }) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     userDetails: state.userReducer.updateUserDetails,
   };

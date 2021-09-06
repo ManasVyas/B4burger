@@ -17,7 +17,6 @@ const UpdateItem = ({ updateItem, itemDetails }) => {
   const history = useHistory();
 
   useEffect(() => {
-    console.log(itemDetails);
     setItem({
       _id: itemDetails._id,
       name: itemDetails.name,
@@ -42,7 +41,6 @@ const UpdateItem = ({ updateItem, itemDetails }) => {
     const { name, value } = e.target;
     if (name === "file") {
       setFile([...file, e.target.files[0]]);
-      console.log(e.target.files[0]);
     }
     setItem((prevState) => ({
       ...prevState,
@@ -60,7 +58,6 @@ const UpdateItem = ({ updateItem, itemDetails }) => {
     formData.append("type", item.type);
     formData.append("timeToPrep", item.timeToPrep);
     const response = await updateItem(formData);
-    console.log(response);
     if (response.status === 200) {
       Swal.fire({
         position: "center",
@@ -78,7 +75,6 @@ const UpdateItem = ({ updateItem, itemDetails }) => {
         timer: 2000,
       });
     }
-    console.log(itemDetails);
     history.push("/admin");
     resetForm();
   };

@@ -16,7 +16,6 @@ export const checkout = async (orderDetails) => {
 export const loadOrders = async () => {
   try {
     const response = await axios.get(`${config.Backend_URL}order`);
-    console.log("api", response);
     return response;
   } catch (error) {
     return error;
